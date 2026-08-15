@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Outfit', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', 'Cinzel', serif;
+  --color-gold: #C69F66;
+  --color-gold-light: #E5C28F;
+  --color-gold-dark: #A57D45;
+  --color-dark-canvas: #0A0A0C;
+  --color-dark-surface: #0F0F12;
+  --color-dark-card: #16161A;
+  --color-dark-border: #2A2A2E;
+}
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #E0E0E0;
+    background-color: #0A0A0C;
+  }
+  
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Outfit', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .font-serif {
+    font-family: 'Playfair Display', 'Cormorant Garamond', 'Cinzel', serif;
+  }
+}
+
+/* Custom subtle ambient glow & lighting */
+.gold-glow {
+  box-shadow: 0 0 40px -10px rgba(198, 159, 102, 0.25);
+}
+
+.gold-glow-lg {
+  box-shadow: 0 0 60px -10px rgba(198, 159, 102, 0.35);
+}
+
+.gold-glow-button {
+  box-shadow: 0 0 20px rgba(198, 159, 102, 0.3);
+}
+
+.emerald-glow {
+  box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.2);
+}
+
+.card-elevated {
+  background: #16161A;
+  border: 1px solid #2A2A2E;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+}
+
+.card-elevated-gold {
+  background: linear-gradient(145deg, #16161A 0%, #121216 100%);
+  border: 1px solid rgba(198, 159, 102, 0.35);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8), 0 0 25px -8px rgba(198, 159, 102, 0.15);
+}
+
+.card-sophisticated {
+  background: #0F0F12;
+  border: 1px solid #2A2A2E;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-sophisticated:hover {
+  background: #16161A;
+  border-color: rgba(198, 159, 102, 0.4);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F5E6CC 30%, #C69F66 70%, #A57D45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-solid-text {
+  color: #C69F66;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0C;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2E;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C69F66;
+}
