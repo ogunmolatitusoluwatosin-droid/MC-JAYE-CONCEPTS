@@ -67,23 +67,20 @@ export const DeservesMore: React.FC = () => {
         {/* Narrative Description & Pillars */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-14">
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-[#0F0F12] border border-[#2A2A2E] rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl">
-              <h3 className="text-lg sm:text-xl font-serif font-bold text-white">
-                The Anatomy of Room Control
+            <div className="bg-[#0F0F12] border border-[#2A2A2E] rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xl">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">
+                Commanding The Room With Taste
               </h3>
               <p className="text-sm sm:text-base text-[#E0E0E0]/80 leading-relaxed font-light">
-                The right MC knows when to hype the room, when to calm it down, when to respect the elders, when to move the program forward, and when to simply let the moment breathe.
-              </p>
-              <p className="text-sm sm:text-base text-[#E0E0E0]/80 leading-relaxed font-light">
-                Whether it’s your wedding, milestone birthday, corporate gala, product launch, anniversary, or intimate celebration, MC JAYE CONCEPTS takes control of the room without taking away from the occasion.
+                An exceptional host reads the room instinctively — sparking high energy when it's time to celebrate, and honoring cultural protocols with quiet dignity.
               </p>
               
               <div className="p-5 rounded-2xl bg-[#16161A] border border-[#C69F66]/30 text-center">
-                <p className="font-serif font-bold text-xl text-white">
-                  You enjoy your event.
+                <p className="font-serif font-bold text-lg text-white">
+                  You enjoy your milestone.
                 </p>
-                <p className="text-[#C69F66] font-semibold text-lg font-serif italic">
-                  We handle the flow.
+                <p className="text-[#C69F66] font-semibold text-base font-serif italic mt-0.5">
+                  We steer the entire program.
                 </p>
               </div>
             </div>

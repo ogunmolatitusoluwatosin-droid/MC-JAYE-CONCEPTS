@@ -15,6 +15,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { AtmosphereGallery } from './components/AtmosphereGallery';
 import { DeservesMore } from './components/DeservesMore';
 import { ZeroGbegeGuarantee } from './components/ZeroGbegeGuarantee';
 import { ImagineFlow } from './components/ImagineFlow';
@@ -23,11 +24,9 @@ import { PreEventFramework } from './components/PreEventFramework';
 import { PricingPackages } from './components/PricingPackages';
 import { WhyMcJaye } from './components/WhyMcJaye';
 import { EventDifferent } from './components/EventDifferent';
-import { AtmosphereGallery } from './components/AtmosphereGallery';
 import { FinalCallout } from './components/FinalCallout';
 import { BookingModal } from './components/BookingModal';
 import { ThankYouModal } from './components/ThankYouModal';
-import { VideoReelModal } from './components/VideoReelModal';
 import { Footer } from './components/Footer';
 import { FloatingContactBar } from './components/FloatingContactBar';
 import { LeadSubmission } from './types';
@@ -36,7 +35,6 @@ import { SITE_CONFIG } from './config';
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedTierId, setSelectedTierId] = useState<string | undefined>('weddings');
-  const [isReelModalOpen, setIsReelModalOpen] = useState(false);
   const [isThankYouModalOpen, setIsThankYouModalOpen] = useState(false);
   const [lastLeadData, setLastLeadData] = useState<LeadSubmission | null>(null);
 
@@ -61,56 +59,52 @@ export default function App() {
       {/* 1. Global Navigation Bar */}
       <Navbar 
         onOpenBooking={handleOpenBooking} 
-        onOpenReel={() => setIsReelModalOpen(true)} 
       />
 
       {/* 2. Main Narrative & Sales Page Sections */}
       <main>
-        {/* Section 0: Hero & Opening Problem Statement */}
+        {/* Section 0: Hero Spotlight & Value Delivery */}
         <Hero 
           onOpenBooking={() => handleOpenBooking()} 
-          onOpenReel={() => setIsReelModalOpen(true)} 
         />
 
-        {/* Section 1: Your Event Deserves More Than Someone Holding a Microphone */}
+        {/* Section 1: Atmosphere Gallery & Stage Presence (Moved Upward so pictures are seen right away!) */}
+        <AtmosphereGallery />
+
+        {/* Section 2: Your Event Deserves More Than Someone Holding a Microphone */}
         <DeservesMore />
 
-        {/* Section 2: Introducing The Zero-Gbege Guarantee™ */}
+        {/* Section 3: Introducing The Zero-Gbege Guarantee™ */}
         <ZeroGbegeGuarantee 
           onOpenBooking={() => handleOpenBooking()} 
         />
 
-        {/* Section 3: Imagine What Your Event Feels Like When Everything Just Flows */}
+        {/* Section 4: Imagine What Your Event Feels Like When Everything Just Flows */}
         <ImagineFlow 
           onOpenBooking={() => handleOpenBooking()} 
         />
 
-        {/* Section 4: One MC. Three Languages. One Seamless Experience (The Signature Soundboard) */}
+        {/* Section 5: The Signature Soundboard & Multilingual Flow */}
         <LanguagesAndSoundboard />
 
-        {/* Section 5: What Happens Before Your Event Matters (5-Step Framework) */}
+        {/* Section 6: What Happens Before Your Event Matters (5-Step Framework) */}
         <PreEventFramework 
           onOpenBooking={() => handleOpenBooking()} 
         />
 
-        {/* Section 6: Choose Your Experience & Pricing */}
+        {/* Section 7: Choose Your Experience & Pricing */}
         <PricingPackages 
           onSelectPackage={(tierId) => handleOpenBooking(tierId)} 
         />
 
-        {/* Section 7: Why MC JAYE CONCEPTS? */}
+        {/* Section 8: Why MC JAYE CONCEPTS? */}
         <WhyMcJaye 
           onOpenBooking={() => handleOpenBooking()} 
         />
 
-        {/* Section 8: “But What If My Event Is Different?” */}
+        {/* Section 9: “But What If My Event Is Different?” */}
         <EventDifferent 
           onOpenBooking={() => handleOpenBooking()} 
-        />
-
-        {/* Section 9: Atmosphere Gallery & Video Highlights */}
-        <AtmosphereGallery 
-          onOpenReel={() => setIsReelModalOpen(true)} 
         />
 
         {/* Section 10: Final Callout & Celebration Commitment */}
@@ -136,13 +130,6 @@ export default function App() {
         selectedTierId={selectedTierId}
         onClose={() => setIsBookingModalOpen(false)}
         onSuccess={handleBookingSuccess}
-      />
-
-      {/* Video Reel Modal */}
-      <VideoReelModal
-        isOpen={isReelModalOpen}
-        onClose={() => setIsReelModalOpen(false)}
-        onOpenBooking={() => handleOpenBooking()}
       />
 
       {/* Thank You & Fast-Track WhatsApp Modal */}

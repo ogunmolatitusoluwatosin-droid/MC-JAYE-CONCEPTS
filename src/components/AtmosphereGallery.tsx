@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, Camera, ExternalLink, Instagram, Music2, Maximize2, X, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
+import { Sparkles, Camera, Instagram, Music2, Maximize2, X, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
 import { GALLERY_ITEMS, SITE_CONFIG } from '../config';
 
 interface AtmosphereGalleryProps {
-  onOpenReel: () => void;
+  onOpenReel?: () => void;
 }
 
 export const AtmosphereGallery: React.FC<AtmosphereGalleryProps> = () => {
@@ -33,32 +33,27 @@ export const AtmosphereGallery: React.FC<AtmosphereGalleryProps> = () => {
   return (
     <section 
       id="gallery"
-      className="py-20 bg-[#0A0A0C] relative overflow-hidden"
+      className="py-16 sm:py-20 bg-[#0A0A0C] relative overflow-hidden"
     >
-      {/* Considered Divider */}
-      <div className="max-w-4xl mx-auto mb-16 px-4">
-        <div className="h-[1px] bg-[#2A2A2E]" />
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#16161A] border border-[#2A2A2E] text-[#C69F66] text-xs font-semibold uppercase tracking-wider mb-4 shadow-lg">
+        {/* Section Header - Short & Captivating */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#16161A] border border-[#2A2A2E] text-[#C69F66] text-xs font-semibold uppercase tracking-wider mb-3 shadow-lg">
             <Camera className="w-3.5 h-3.5 text-[#C69F66]" />
             <span>Live Atmosphere & Photos</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl text-white font-bold tracking-tight leading-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-5xl text-white font-bold tracking-tight leading-tight mb-3">
             The Room In Action
           </h2>
 
           <p className="text-sm sm:text-base text-[#E0E0E0]/80 font-light">
-            Real celebrations, authentic energy, and unforgettable stage command across Lagos and destination venues.
+            Real celebrations. Authentic energy. Pure stage command.
           </p>
         </div>
 
-        {/* Gallery Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {/* Gallery Cards Grid - Pictures are prominent, large, and click-to-view */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-12">
           {GALLERY_ITEMS.map((item, idx) => (
             <motion.div
               key={idx}
@@ -66,24 +61,25 @@ export const AtmosphereGallery: React.FC<AtmosphereGalleryProps> = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="bg-[#0F0F12] border border-[#2A2A2E] rounded-3xl overflow-hidden group hover:border-[#C69F66]/50 transition-all flex flex-col justify-between shadow-xl"
+              onClick={() => openLightbox(idx)}
+              className="bg-[#0F0F12] border border-[#2A2A2E] hover:border-[#C69F66]/60 rounded-3xl overflow-hidden group transition-all flex flex-col justify-between shadow-2xl cursor-pointer"
             >
-              {/* Visual Presentation Area with Real Photo */}
-              <div className="h-64 sm:h-72 bg-[#16161A] relative overflow-hidden border-b border-[#2A2A2E]">
+              {/* Visual Presentation Area - Tall, high-visibility picture */}
+              <div className="h-80 sm:h-96 bg-[#16161A] relative overflow-hidden">
                 {/* Background Image */}
                 <img
                   src={item.image}
                   alt={item.title}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-95 group-hover:brightness-105"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 filter brightness-100 group-hover:brightness-105"
                   loading="lazy"
                 />
 
-                {/* Subtle Gradient Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-black/30 to-black/60 pointer-events-none" />
+                {/* Subtle Gradient vignette strictly at bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-transparent to-black/20 pointer-events-none" />
 
                 {/* Top Badges */}
-                <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10 pointer-events-none">
                   <span className="px-2.5 py-1 rounded-full bg-[#0A0A0C]/85 backdrop-blur-md border border-[#2A2A2E] text-[#C69F66] font-semibold text-[10px] uppercase tracking-wider">
                     {item.tag}
                   </span>
@@ -93,47 +89,24 @@ export const AtmosphereGallery: React.FC<AtmosphereGalleryProps> = () => {
                   </span>
                 </div>
 
-                {/* Hover Action Overlay */}
-                <div className="absolute inset-0 bg-[#0A0A0C]/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center gap-2 p-4 z-20">
-                  <button
-                    onClick={() => openLightbox(idx)}
-                    className="px-4 py-2 rounded-full bg-[#C69F66] hover:bg-white text-[#0A0A0C] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-lg transition-transform active:scale-95 cursor-pointer"
-                  >
-                    <Maximize2 className="w-3.5 h-3.5" />
-                    <span>Zoom Photo</span>
-                  </button>
-
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] text-white/80 hover:text-[#C69F66] transition-colors"
-                  >
-                    <span>View original link</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
+                {/* Hover Quick Zoom Pill */}
+                <div className="absolute bottom-3 right-3 z-10">
+                  <div className="px-3 py-1.5 rounded-full bg-[#0A0A0C]/90 backdrop-blur-md border border-[#C69F66]/50 text-white text-[11px] font-semibold flex items-center gap-1.5 group-hover:bg-[#C69F66] group-hover:text-[#0A0A0C] transition-colors">
+                    <Maximize2 className="w-3 h-3" />
+                    <span>View HD</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Caption details */}
-              <div className="p-5 flex-1 flex flex-col justify-between">
+              {/* Caption details - Short, captivating copy */}
+              <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-serif font-bold text-base text-white mb-1.5 group-hover:text-[#C69F66] transition-colors">
+                  <h3 className="font-serif font-bold text-base text-white mb-1 group-hover:text-[#C69F66] transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs text-[#E0E0E0]/70 leading-relaxed font-light">
                     {item.subtitle}
                   </p>
-                </div>
-                <div className="pt-3 mt-3 border-t border-[#2A2A2E] flex items-center justify-between text-[11px]">
-                  <span className="text-[#C69F66] font-serif italic">MC Jaye Live</span>
-                  <button
-                    onClick={() => openLightbox(idx)}
-                    className="text-[#E0E0E0]/60 hover:text-white flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>View HD</span>
-                    <Maximize2 className="w-3 h-3" />
-                  </button>
                 </div>
               </div>
             </motion.div>

@@ -62,22 +62,18 @@ export const ImagineFlow: React.FC<ImagineFlowProps> = ({ onOpenBooking }) => {
                 <span className="text-[#C69F66]">01.</span> Zero Stress On You
               </h3>
 
-              <div className="space-y-3.5 text-sm sm:text-base text-[#E0E0E0]/80 font-light mb-8">
-                <p className="flex items-center gap-3">
+              <div className="space-y-3 text-sm text-[#E0E0E0]/80 font-light mb-6">
+                <p className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C69F66]"></span>
-                  <span>No running around checking whether the DJ is ready.</span>
+                  <span>No rushing around checking on the DJ or planners.</span>
                 </p>
-                <p className="flex items-center gap-3">
+                <p className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C69F66]"></span>
-                  <span>No whispering instructions into people's ears.</span>
+                  <span>No long, dragged-out speeches or awkward pauses.</span>
                 </p>
-                <p className="flex items-center gap-3">
+                <p className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C69F66]"></span>
-                  <span>No worrying about whether speeches are taking forever.</span>
-                </p>
-                <p className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C69F66]"></span>
-                  <span>No wondering why there has been 15 minutes of silence.</span>
+                  <span>No worrying about who speaks next or when food comes out.</span>
                 </p>
               </div>
 

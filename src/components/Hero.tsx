@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Sparkles, Calendar, Play, Volume2, ShieldCheck, CheckCircle2, ChevronDown, Mic2 } from 'lucide-react';
+import { Sparkles, Calendar, Camera, Volume2, ShieldCheck, CheckCircle2, ChevronDown, Mic2 } from 'lucide-react';
 import { SITE_CONFIG } from '../config';
 
 interface HeroProps {
   onOpenBooking: () => void;
-  onOpenReel: () => void;
+  onOpenReel?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenReel }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
   return (
     <section 
       id="hero-section"
@@ -54,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenReel }) => {
           </h1>
         </motion.div>
 
-        {/* Sub-headline */}
+        {/* Sub-headline - Short & Captivating */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,16 +72,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenReel }) => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="max-w-5xl mx-auto mb-10 grid grid-cols-1 lg:grid-cols-12 gap-6 text-left"
         >
-          {/* Real Photo Card of MC Jaye */}
+          {/* Real Photo Card of MC Jaye - Clear, full picture without blocking overlays */}
           <div className="lg:col-span-5 bg-[#0F0F12] border border-[#2A2A2E] rounded-3xl p-4 sm:p-5 relative overflow-hidden group shadow-2xl flex flex-col justify-between">
-            <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden border border-[#2A2A2E] mb-4">
+            <div className="relative h-96 sm:h-[420px] rounded-2xl overflow-hidden border border-[#2A2A2E] mb-4">
               <img
                 src={SITE_CONFIG.whatsappPhoneNumber ? "https://i.ibb.co/v4cjtKDk/Whats-App-Image-2026-08-14-at-19-02-01.jpg" : ""}
                 alt="MC Jaye Concepts Live Event Compere"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-top filter brightness-100 contrast-105 group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-transparent to-black/30 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C]/80 via-transparent to-black/20 pointer-events-none" />
 
               {/* Verified Host Badge */}
               <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full bg-[#0A0A0C]/90 backdrop-blur-md border border-[#C69F66]/50 flex items-center gap-1.5">
@@ -91,21 +91,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenReel }) => {
                 </span>
               </div>
 
-              {/* Energy Tag */}
-              <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-[#0A0A0C]/85 backdrop-blur-md border border-[#2A2A2E]">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-serif font-bold text-sm text-white">MC JAYE CONCEPTS</p>
-                    <p className="text-[11px] text-[#C69F66]">High-Energy Event Host & Compere</p>
-                  </div>
-                  <button
-                    onClick={onOpenReel}
-                    className="p-2 rounded-full bg-[#C69F66] text-[#0A0A0C] hover:bg-white transition-colors"
-                    aria-label="Play Reel"
-                  >
-                    <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                  </button>
+              {/* Clean Caption Bar at Bottom */}
+              <div className="absolute bottom-3 left-3 right-3 px-3.5 py-2 rounded-xl bg-[#0A0A0C]/90 backdrop-blur-md border border-[#2A2A2E] flex items-center justify-between">
+                <div>
+                  <p className="font-serif font-bold text-xs sm:text-sm text-white">MC JAYE CONCEPTS</p>
+                  <p className="text-[10px] text-[#C69F66]">High-Energy Event Host & Compere</p>
                 </div>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               </div>
             </div>
 
@@ -122,50 +114,52 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenReel }) => {
             </div>
           </div>
 
-          {/* Problem Statement & Solution Card */}
+          {/* Short & Captivating Value Proposition Card */}
           <div className="lg:col-span-7 bg-[#0F0F12] border border-[#2A2A2E] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
-            <div className="space-y-3.5 text-sm sm:text-base text-[#E0E0E0]/80 leading-relaxed font-light">
-              <p className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C69F66] mt-2.5 shrink-0"></span>
-                <span>Your guests didn’t come to watch the event coordinator chase the DJ.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C69F66] mt-2.5 shrink-0"></span>
-                <span>They didn’t come to sit through awkward silences while someone searches for the next speaker.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C69F66] mt-2.5 shrink-0"></span>
-                <span>And you certainly didn’t spend money, time, and energy planning a memorable celebration just for the program to become “Sorry, who is next?”</span>
-              </p>
-            </div>
-
-            <div className="my-5 border-t border-[#2A2A2E]" />
-
-            <div className="space-y-3 text-sm sm:text-base text-[#E0E0E0]">
-              <p className="font-serif italic font-bold text-[#C69F66] text-base sm:text-lg">
-                That’s where MC JAYE CONCEPTS comes in.
-              </p>
-              <p className="leading-relaxed font-light text-xs sm:text-sm text-[#E0E0E0]/90">
-                A high-energy, culturally polished event compere built to keep your celebration organized, engaging, respectful, and alive from the first announcement to the final send-off.
-              </p>
-              <div className="pt-2 flex flex-wrap gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#16161A] border border-[#2A2A2E] text-[#E0E0E0] text-xs font-semibold">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C69F66]" />
-                  No dry moments
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#16161A] border border-[#2A2A2E] text-[#E0E0E0] text-xs font-semibold">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C69F66]" />
-                  No unnecessary gbege
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#16161A] border border-[#2A2A2E] text-[#E0E0E0] text-xs font-semibold">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C69F66]" />
-                  No confused vendors
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C69F66]/15 border border-[#C69F66]/40 text-[#C69F66] text-xs font-bold">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  Just a program that flows
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#C69F66]" />
+                <span className="text-xs uppercase font-bold tracking-widest text-[#C69F66]">
+                  Flawless Event Delivery
                 </span>
               </div>
+
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white leading-snug">
+                Your guests came to celebrate. <br />
+                <span className="text-[#C69F66] italic">Not to watch awkward pauses.</span>
+              </h2>
+
+              <p className="text-sm sm:text-base text-[#E0E0E0]/80 font-light leading-relaxed">
+                MC JAYE CONCEPTS commands the room with infectious energy, sharp humor, and seamless vendor coordination — keeping every transition effortless.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div className="p-3.5 rounded-2xl bg-[#16161A] border border-[#2A2A2E] flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C69F66] shrink-0" />
+                  <span className="text-xs font-semibold text-white">Zero Awkward Silences</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-[#16161A] border border-[#2A2A2E] flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C69F66] shrink-0" />
+                  <span className="text-xs font-semibold text-white">Strict Timekeeping</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-[#16161A] border border-[#2A2A2E] flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C69F66] shrink-0" />
+                  <span className="text-xs font-semibold text-white">Cultural Protocol</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-[#16161A] border border-[#C69F66]/40 flex items-center gap-2.5">
+                  <Sparkles className="w-4 h-4 text-[#C69F66] shrink-0" />
+                  <span className="text-xs font-bold text-[#C69F66]">Unbroken Flow</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-5 border-t border-[#2A2A2E] flex items-center justify-between">
+              <p className="text-xs text-[#E0E0E0]/70 font-light">
+                English • Nigerian Pidgin • Yoruba
+              </p>
+              <span className="text-xs font-mono font-semibold text-[#C69F66]">
+                150+ Celebrations
+              </span>
             </div>
           </div>
         </motion.div>
@@ -186,16 +180,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenReel }) => {
             <span>Check Availability & Get Quote</span>
           </button>
 
-          <button
-            id="hero-btn-watch-highlights"
-            onClick={onOpenReel}
+          <a
+            id="hero-btn-view-atmosphere"
+            href="#gallery"
             className="w-full sm:w-auto px-7 py-4 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider text-white hover:text-[#C69F66] bg-[#16161A] hover:bg-[#202026] border border-[#2A2A2E] hover:border-[#C69F66]/50 shadow-lg transition-all flex items-center justify-center gap-3 cursor-pointer group"
           >
-            <div className="w-6 h-6 rounded-full bg-[#C69F66]/20 group-hover:bg-[#C69F66] flex items-center justify-center transition-colors">
-              <Play className="w-3 h-3 text-[#C69F66] group-hover:text-[#0A0A0C] fill-current ml-0.5" />
-            </div>
-            <span>Watch Energy Reel</span>
-          </button>
+            <Camera className="w-4 h-4 text-[#C69F66]" />
+            <span>View Live Event Photos</span>
+          </a>
         </motion.div>
 
         {/* Direct Contact Quick Action Strip */}

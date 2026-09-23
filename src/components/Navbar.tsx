@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Calendar, Menu, X, Instagram, Music2, Phone, MessageSquare, PhoneCall } from 'lucide-react';
+import { Calendar, Menu, X, Instagram, Music2, Phone, MessageSquare } from 'lucide-react';
 import { SITE_CONFIG } from '../config';
 
 interface NavbarProps {
   onOpenBooking: (tierId?: string) => void;
-  onOpenReel: () => void;
+  onOpenReel?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showCallDropdown, setShowCallDropdown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,26 +60,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => 
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden xl:flex items-center gap-6 text-[11px] uppercase tracking-widest font-semibold text-[#E0E0E0]/70">
+        <nav className="hidden lg:flex items-center gap-7 text-[11px] uppercase tracking-widest font-semibold text-[#E0E0E0]/70">
           <a 
-            href="#"
-            onClick={handleScrollToTop}
-            className="hover:text-[#C69F66] transition-colors py-1 text-white font-bold cursor-pointer"
+            href="#gallery" 
+            className="hover:text-[#C69F66] transition-colors py-1"
           >
-            Main Page
+            Live Photos
           </a>
           <a 
             href="#the-guarantee" 
             className="hover:text-[#C69F66] transition-colors py-1"
           >
             The Guarantee
-          </a>
-          <a 
-            href="#languages" 
-            className="hover:text-[#C69F66] transition-colors py-1 flex items-center gap-1.5"
-          >
-            <span>3 Languages</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C69F66] animate-pulse"></span>
           </a>
           <a 
             href="#framework" 
@@ -104,64 +95,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => 
 
         {/* Action Controls */}
         <div className="hidden lg:flex items-center gap-3">
-          {/* Quick Call Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setShowCallDropdown(!showCallDropdown)}
-              onBlur={() => setTimeout(() => setShowCallDropdown(false), 250)}
-              className="px-3.5 py-2 rounded-full text-xs font-semibold text-[#E0E0E0] hover:text-[#C69F66] bg-[#16161A] hover:bg-[#202026] border border-[#2A2A2E] hover:border-[#C69F66]/50 transition-all flex items-center gap-1.5 cursor-pointer"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#C69F66]" />
-              <span>Call MC Jaye</span>
-            </button>
-
-            {showCallDropdown && (
-              <div className="absolute top-full right-0 mt-2 w-56 bg-[#0F0F12] border border-[#2A2A2E] rounded-2xl p-2 shadow-2xl z-50 flex flex-col gap-1 animate-in fade-in zoom-in-95 duration-150">
-                <a
-                  href={`tel:${SITE_CONFIG.primaryPhone}`}
-                  className="px-3 py-2 rounded-xl hover:bg-[#16161A] text-xs font-medium text-white flex items-center justify-between group"
-                >
-                  <span className="text-[#E0E0E0]/80">Primary Line:</span>
-                  <span className="font-mono text-[#C69F66] font-bold">{SITE_CONFIG.primaryPhoneDisplay}</span>
-                </a>
-                <a
-                  href={`tel:${SITE_CONFIG.secondaryPhone}`}
-                  className="px-3 py-2 rounded-xl hover:bg-[#16161A] text-xs font-medium text-white flex items-center justify-between group"
-                >
-                  <span className="text-[#E0E0E0]/80">Second Line:</span>
-                  <span className="font-mono text-[#C69F66] font-bold">{SITE_CONFIG.secondaryPhoneDisplay}</span>
-                </a>
-                <a
-                  href={`https://wa.me/${SITE_CONFIG.whatsappPhoneNumber}?text=${encodeURIComponent("Hello MC JAYE, I would like to inquire about hosting my event.")}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-3 py-2 rounded-xl bg-[#C69F66]/10 hover:bg-[#C69F66] hover:text-[#0A0A0C] text-xs font-semibold text-[#C69F66] flex items-center gap-2 mt-1 transition-colors"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" />
-                  <span>WhatsApp: {SITE_CONFIG.whatsappDisplay}</span>
-                </a>
-              </div>
-            )}
-          </div>
-
           <a
             href={`https://wa.me/${SITE_CONFIG.whatsappPhoneNumber}?text=${encodeURIComponent("Hello MC JAYE, I would like to inquire about hosting my event.")}`}
             target="_blank"
             rel="noreferrer"
-            className="px-3.5 py-2 rounded-full text-xs font-semibold text-[#C69F66] hover:text-white bg-[#16161A] hover:bg-[#202026] border border-[#2A2A2E] hover:border-[#C69F66]/50 transition-all flex items-center gap-1.5 cursor-pointer"
+            className="px-4 py-2 rounded-full text-xs font-semibold text-[#C69F66] hover:text-white bg-[#16161A] hover:bg-[#202026] border border-[#2A2A2E] hover:border-[#C69F66]/50 transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <MessageSquare className="w-3.5 h-3.5 text-[#C69F66]" />
             <span>WhatsApp</span>
           </a>
-
-          <button
-            id="nav-btn-watch-reel"
-            onClick={onOpenReel}
-            className="px-3.5 py-2 rounded-full text-xs font-semibold text-[#E0E0E0] hover:text-[#C69F66] bg-[#16161A] hover:bg-[#202026] border border-[#2A2A2E] hover:border-[#C69F66]/50 transition-all flex items-center gap-1.5 cursor-pointer"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-[#C69F66]" />
-            <span>Reel</span>
-          </button>
 
           <button
             id="nav-btn-book-quote"
@@ -174,7 +116,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => 
         </div>
 
         {/* Mobile Hamburger Toggle & Quick Call */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <a
             href={`tel:${SITE_CONFIG.primaryPhone}`}
             className="p-2 rounded-full bg-[#16161A] border border-[#2A2A2E] text-[#C69F66] hover:bg-[#C69F66] hover:text-[#0A0A0C] transition-colors"
@@ -204,16 +146,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => 
       {mobileMenuOpen && (
         <div 
           id="mobile-nav-drawer"
-          className="md:hidden mt-2 mx-4 p-5 rounded-2xl bg-[#0F0F12] border border-[#2A2A2E] shadow-2xl flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200"
+          className="lg:hidden mt-2 mx-4 p-5 rounded-2xl bg-[#0F0F12] border border-[#2A2A2E] shadow-2xl flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200"
         >
           <nav className="flex flex-col gap-2.5 text-xs font-semibold uppercase tracking-wider text-[#E0E0E0]/80">
             <a 
-              href="#" 
-              onClick={handleScrollToTop}
-              className="px-3 py-2 rounded-lg bg-[#16161A] text-white hover:text-[#C69F66] transition-colors font-bold flex items-center justify-between"
+              href="#gallery" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-lg hover:bg-[#16161A] hover:text-[#C69F66] transition-colors"
             >
-              <span>Main Page (Home)</span>
-              <span className="text-[10px] text-[#C69F66] font-mono">↑ Top</span>
+              Live Photos & Stage
             </a>
             <a 
               href="#the-guarantee" 
@@ -221,13 +162,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => 
               className="px-3 py-2 rounded-lg hover:bg-[#16161A] hover:text-[#C69F66] transition-colors"
             >
               The Zero-Gbege Guarantee™
-            </a>
-            <a 
-              href="#languages" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#16161A] hover:text-[#C69F66] transition-colors"
-            >
-              3 Languages (English • Pidgin • Yoruba)
             </a>
             <a 
               href="#framework" 
@@ -287,18 +221,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => 
           </div>
 
           <div className="pt-2 border-t border-[#2A2A2E] flex flex-col gap-2.5">
-            <button
-              id="mobile-btn-watch-reel"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenReel();
-              }}
-              className="w-full py-2.5 rounded-full text-xs font-semibold text-[#C69F66] bg-[#16161A] border border-[#2A2A2E] flex items-center justify-center gap-2"
-            >
-              <Sparkles className="w-4 h-4 text-[#C69F66]" />
-              <span>Watch Highlights Reel</span>
-            </button>
-
             <button
               id="mobile-btn-book-action"
               onClick={() => {
