@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Calendar, Camera, Volume2, ShieldCheck, CheckCircle2, ChevronDown, Mic2 } from 'lucide-react';
-import { SITE_CONFIG } from '../config';
+import { SITE_CONFIG, MC_IMAGES } from '../config';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -76,9 +76,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           <div className="lg:col-span-5 bg-[#0F0F12] border border-[#2A2A2E] rounded-3xl p-4 sm:p-5 relative overflow-hidden group shadow-2xl flex flex-col justify-between">
             <div className="relative h-96 sm:h-[420px] rounded-2xl overflow-hidden border border-[#2A2A2E] mb-4">
               <img
-                src={SITE_CONFIG.whatsappPhoneNumber ? "https://i.ibb.co/v4cjtKDk/Whats-App-Image-2026-08-14-at-19-02-01.jpg" : ""}
+                src={MC_IMAGES.hero}
                 alt="MC Jaye Concepts Live Event Compere"
-                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-top filter brightness-100 contrast-105 group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C]/80 via-transparent to-black/20 pointer-events-none" />

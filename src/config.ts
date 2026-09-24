@@ -15,7 +15,10 @@
  * ============================================================================
  */
 
-import corporateGalaImg from './assets/images/corporate_gala_mc_1786786492709.jpg';
+import mcJayeBlazerImg from './assets/images/mc_jaye_blazer.jpg';
+import mcJayeHeroImg from './assets/images/mc_jaye_hero.jpg';
+import mcJayeTraditionalImg from './assets/images/mc_jaye_traditional.jpg';
+import mcJayeReceptionImg from './assets/images/mc_jaye_reception.jpg';
 
 export const SITE_CONFIG = {
   // 1. YOUR WHATSAPP NUMBER & DIRECT CALL LINES
@@ -185,10 +188,11 @@ export const PRE_EVENT_STEPS = [
  * Direct Image Assets for MC Jaye Concepts
  */
 export const MC_IMAGES = {
-  hero: "https://i.ibb.co/v4cjtKDk/Whats-App-Image-2026-08-14-at-19-02-01.jpg",
-  traditional: "https://i.ibb.co/sB6t5Fz/Whats-App-Image-2026-08-14-at-18-49-31.jpg",
-  crowdEngage: "https://i.ibb.co/V06D231s/Whats-App-Image-2026-08-14-at-18-49-30.jpg",
-  corporateSuit: corporateGalaImg,
+  hero: mcJayeHeroImg,
+  traditional: mcJayeTraditionalImg,
+  crowdEngage: mcJayeReceptionImg,
+  blazerSuit: mcJayeBlazerImg,
+  corporateSuit: mcJayeBlazerImg,
 };
 
 /**
@@ -198,7 +202,7 @@ export const GALLERY_ITEMS = [
   {
     title: "The Entrance Hype & Stage Command",
     subtitle: "High-voltage celebration with flawless coordination and presence",
-    image: "https://i.ibb.co/v4cjtKDk/Whats-App-Image-2026-08-14-at-19-02-01.jpg",
+    image: mcJayeHeroImg,
     link: "https://ibb.co/HTKHJkXq",
     tag: "Weddings & Luxury Galas",
     energy: "Pure Hype"
@@ -206,7 +210,7 @@ export const GALLERY_ITEMS = [
   {
     title: "Cultural Protocol & Elder Reverence",
     subtitle: "Honouring Nigerian traditions with deep dignity, warmth, and respect",
-    image: "https://i.ibb.co/sB6t5Fz/Whats-App-Image-2026-08-14-at-18-49-31.jpg",
+    image: mcJayeTraditionalImg,
     link: "https://ibb.co/cmCxbNV",
     tag: "Traditional & Milestones",
     energy: "Deep Respect"
@@ -214,15 +218,15 @@ export const GALLERY_ITEMS = [
   {
     title: "Unbroken Room Momentum",
     subtitle: "Zero awkward silences, natural charisma, and total guest engagement",
-    image: "https://i.ibb.co/V06D231s/Whats-App-Image-2026-08-14-at-18-49-30.jpg",
+    image: mcJayeReceptionImg,
     link: "https://ibb.co/SDS0RJjz",
     tag: "Celebrations & Receptions",
     energy: "Seamless Flow"
   },
   {
     title: "Executive Polish & Timekeeping",
-    subtitle: "Pristine black-tie decorum keeping your schedule strictly on track",
-    image: corporateGalaImg,
+    subtitle: "MC Jaye in tailored blazer attire, keeping your program strictly on schedule",
+    image: mcJayeBlazerImg,
     link: "https://ibb.co/3mrfMS0H",
     tag: "Corporate & Formal Galas",
     energy: "Precision"

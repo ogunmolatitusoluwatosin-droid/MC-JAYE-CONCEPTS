@@ -203,39 +203,8 @@ export const LanguagesAndSoundboard: React.FC = () => {
                 </div>
               </div>
 
-              {/* Dynamic Waveform Visualizer simulation */}
-              <div className="p-4 rounded-2xl bg-[#0A0A0C] border border-[#2A2A2E] space-y-2">
-                <div className="flex items-center justify-between text-xs text-[#E0E0E0]/50 px-1">
-                  <span>Vocal Cadence & Delivery Waveform</span>
-                  <span className="text-[#C69F66] font-mono text-[11px]">Live Microphone Output</span>
-                </div>
-
-                {/* Animated Waveform Bars */}
-                <div className="h-10 flex items-center justify-center gap-1 sm:gap-1.5 px-2">
-                  {[40, 65, 85, 45, 95, 70, 30, 80, 100, 55, 90, 45, 75, 95, 60, 85, 50, 90, 70, 40, 60, 80, 50].map((h, i) => (
-                    <motion.div
-                      key={i}
-                      animate={{
-                        height: [
-                          `${Math.max(15, h * 0.3)}%`,
-                          `${h}%`,
-                          `${Math.max(20, h * 0.5)}%`,
-                        ]
-                      }}
-                      transition={{
-                        duration: 0.8 + (i % 5) * 0.15,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut"
-                      }}
-                      className="w-1 sm:w-1.5 rounded-full bg-[#C69F66]"
-                    />
-                  ))}
-                </div>
-              </div>
-
               {/* Sample Cadence Quotes */}
-              <div className="space-y-3">
+              <div className="space-y-3 pt-2">
                 <p className="text-xs font-bold uppercase tracking-widest text-[#C69F66]">
                   Real-time Delivery Sample:
                 </p>
