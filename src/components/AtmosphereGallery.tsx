@@ -89,13 +89,6 @@ export const AtmosphereGallery: React.FC<AtmosphereGalleryProps> = () => {
                   </span>
                 </div>
 
-                {/* Hover Quick Zoom Pill */}
-                <div className="absolute bottom-3 right-3 z-10">
-                  <div className="px-3 py-1.5 rounded-full bg-[#0A0A0C]/90 backdrop-blur-md border border-[#C69F66]/50 text-white text-[11px] font-semibold flex items-center gap-1.5 group-hover:bg-[#C69F66] group-hover:text-[#0A0A0C] transition-colors">
-                    <Maximize2 className="w-3 h-3" />
-                    <span>View HD</span>
-                  </div>
-                </div>
               </div>
 
               {/* Caption details - Short, captivating copy */}
