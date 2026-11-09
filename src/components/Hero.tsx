@@ -6,9 +6,10 @@ import { SITE_CONFIG, MC_IMAGES } from '../config';
 interface HeroProps {
   onOpenBooking: () => void;
   onOpenReel?: () => void;
+  onNavigateToGallery?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToGallery }) => {
   return (
     <section 
       id="hero-section"
@@ -179,14 +180,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
             <span>Check Availability & Get Quote</span>
           </button>
 
-          <a
+          <button
             id="hero-btn-view-atmosphere"
-            href="#gallery"
+            onClick={() => {
+              if (onNavigateToGallery) {
+                onNavigateToGallery();
+              } else {
+                const el = document.getElementById('gallery');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
             className="w-full sm:w-auto px-7 py-4 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider text-white hover:text-[#C69F66] bg-[#16161A] hover:bg-[#202026] border border-[#2A2A2E] hover:border-[#C69F66]/50 shadow-lg transition-all flex items-center justify-center gap-3 cursor-pointer group"
           >
             <Camera className="w-4 h-4 text-[#C69F66]" />
             <span>View Live Event Photos</span>
-          </a>
+          </button>
         </motion.div>
 
         {/* Direct Contact Quick Action Strip */}

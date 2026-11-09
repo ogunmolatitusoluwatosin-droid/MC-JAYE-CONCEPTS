@@ -19,8 +19,11 @@ import mcJayeBlazerImg from './assets/images/mc_jaye_blazer.jpg';
 import mcJayeHeroImg from './assets/images/mc_jaye_hero.jpg';
 import mcJayeTraditionalImg from './assets/images/mc_jaye_traditional.jpg';
 import mcJayeReceptionImg from './assets/images/mc_jaye_reception.jpg';
+import mcJayeLogoImg from './assets/images/mc_jaye_logo.jpeg';
 
 export const SITE_CONFIG = {
+  // BRAND LOGO
+  logo: mcJayeLogoImg,
   // 1. YOUR WHATSAPP NUMBER & DIRECT CALL LINES
   // WhatsApp number: 08033106047 -> International format: 2348033106047
   whatsappPhoneNumber: "2348033106047",
@@ -188,6 +191,7 @@ export const PRE_EVENT_STEPS = [
  * Direct Image Assets for MC Jaye Concepts
  */
 export const MC_IMAGES = {
+  logo: mcJayeLogoImg,
   hero: mcJayeHeroImg,
   traditional: mcJayeTraditionalImg,
   crowdEngage: mcJayeReceptionImg,
@@ -203,7 +207,6 @@ export const GALLERY_ITEMS = [
     title: "The Entrance Hype & Stage Command",
     subtitle: "High-voltage celebration with flawless coordination and presence",
     image: mcJayeHeroImg,
-    link: "https://ibb.co/HTKHJkXq",
     tag: "Weddings & Luxury Galas",
     energy: "Pure Hype"
   },
@@ -211,7 +214,6 @@ export const GALLERY_ITEMS = [
     title: "Cultural Protocol & Elder Reverence",
     subtitle: "Honouring Nigerian traditions with deep dignity, warmth, and respect",
     image: mcJayeTraditionalImg,
-    link: "https://ibb.co/cmCxbNV",
     tag: "Traditional & Milestones",
     energy: "Deep Respect"
   },
@@ -219,7 +221,6 @@ export const GALLERY_ITEMS = [
     title: "Unbroken Room Momentum",
     subtitle: "Zero awkward silences, natural charisma, and total guest engagement",
     image: mcJayeReceptionImg,
-    link: "https://ibb.co/SDS0RJjz",
     tag: "Celebrations & Receptions",
     energy: "Seamless Flow"
   },
@@ -227,7 +228,6 @@ export const GALLERY_ITEMS = [
     title: "Executive Polish & Timekeeping",
     subtitle: "MC Jaye in tailored blazer attire, keeping your program strictly on schedule",
     image: mcJayeBlazerImg,
-    link: "https://ibb.co/3mrfMS0H",
     tag: "Corporate & Formal Galas",
     energy: "Precision"
   }

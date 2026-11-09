@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Menu, X, Instagram, Music2, Phone, MessageSquare } from 'lucide-react';
+import { Calendar, Menu, X, Instagram, Music2, Phone, MessageSquare, Camera, Sparkles, Layers } from 'lucide-react';
 import { SITE_CONFIG } from '../config';
 
+export type PageId = 'home' | 'gallery' | 'packages';
+
 interface NavbarProps {
+  currentPage: PageId;
+  onNavigate: (page: PageId) => void;
   onOpenBooking: (tierId?: string) => void;
-  onOpenReel?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => {
+export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenBooking }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -19,13 +22,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleScrollToTop = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handlePageClick = (page: PageId, e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
     setMobileMenuOpen(false);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    onNavigate(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -34,63 +35,70 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => 
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled 
           ? 'bg-[#0A0A0C]/95 backdrop-blur-xl border-b border-[#2A2A2E] shadow-2xl py-3.5' 
-          : 'bg-transparent py-5 border-b border-[#2A2A2E]/50'
+          : 'bg-[#0A0A0C]/80 backdrop-blur-md py-4 sm:py-5 border-b border-[#2A2A2E]/50'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo / Identity */}
-        <a 
-          href="#"
-          onClick={handleScrollToTop}
-          className="group flex items-center gap-3 focus:outline-none cursor-pointer"
+        <button 
+          onClick={(e) => handlePageClick('home', e)}
+          className="group flex items-center gap-3 focus:outline-none cursor-pointer text-left"
           id="nav-brand-logo"
-          title="Return to Main Page"
+          title="MC JAYE CONCEPTS Home"
         >
-          <div className="w-10 h-10 rounded-2xl bg-[#16161A] border border-[#2A2A2E] group-hover:border-[#C69F66]/60 flex items-center justify-center transition-all shadow-md">
-            <span className="font-serif font-black text-lg text-[#C69F66] tracking-wider">MJ</span>
+          <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-[#C69F66]/40 group-hover:border-[#C69F66] shadow-[0_0_15px_rgba(198,159,102,0.25)] flex items-center justify-center transition-all bg-black shrink-0">
+            <img 
+              src={SITE_CONFIG.logo} 
+              alt="MC JAYE CONCEPTS Logo" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-base tracking-tight text-white group-hover:text-[#C69F66] transition-colors">
+            <span className="font-bold text-base sm:text-lg tracking-tight text-white group-hover:text-[#C69F66] transition-colors leading-tight">
               MC JAYE <span className="text-[#C69F66]">CONCEPTS</span>
             </span>
-            <span className="text-[9px] tracking-[0.25em] uppercase font-semibold text-[#E0E0E0]/50">
+            <span className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase font-semibold text-[#E0E0E0]/60">
               Professional Event Hosting
             </span>
           </div>
-        </a>
+        </button>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-7 text-[11px] uppercase tracking-widest font-semibold text-[#E0E0E0]/70">
-          <a 
-            href="#gallery" 
-            className="hover:text-[#C69F66] transition-colors py-1"
+        {/* 3 Main Website Page Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-1.5 p-1 rounded-full bg-[#16161A]/80 border border-[#2A2A2E]">
+          <button
+            onClick={() => handlePageClick('home')}
+            className={`px-5 py-2 rounded-full text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer ${
+              currentPage === 'home'
+                ? 'bg-[#C69F66] text-[#0A0A0C] font-bold shadow-md'
+                : 'text-[#E0E0E0]/70 hover:text-white hover:bg-[#202026]'
+            }`}
           >
-            Live Photos
-          </a>
-          <a 
-            href="#the-guarantee" 
-            className="hover:text-[#C69F66] transition-colors py-1"
+            Home
+          </button>
+
+          <button
+            onClick={() => handlePageClick('gallery')}
+            className={`px-5 py-2 rounded-full text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+              currentPage === 'gallery'
+                ? 'bg-[#C69F66] text-[#0A0A0C] font-bold shadow-md'
+                : 'text-[#E0E0E0]/70 hover:text-white hover:bg-[#202026]'
+            }`}
           >
-            The Guarantee
-          </a>
-          <a 
-            href="#framework" 
-            className="hover:text-[#C69F66] transition-colors py-1"
+            <Camera className="w-3.5 h-3.5" />
+            <span>Live Photos & Stage</span>
+          </button>
+
+          <button
+            onClick={() => handlePageClick('packages')}
+            className={`px-5 py-2 rounded-full text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+              currentPage === 'packages'
+                ? 'bg-[#C69F66] text-[#0A0A0C] font-bold shadow-md'
+                : 'text-[#E0E0E0]/70 hover:text-white hover:bg-[#202026]'
+            }`}
           >
-            How It Works
-          </a>
-          <a 
-            href="#packages" 
-            className="hover:text-[#C69F66] transition-colors py-1"
-          >
-            Packages & Pricing
-          </a>
-          <a 
-            href="#why-mc-jaye" 
-            className="hover:text-[#C69F66] transition-colors py-1"
-          >
-            Why MC JAYE
-          </a>
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Packages & Pricing</span>
+          </button>
         </nav>
 
         {/* Action Controls */}
@@ -148,48 +156,58 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => 
           id="mobile-nav-drawer"
           className="lg:hidden mt-2 mx-4 p-5 rounded-2xl bg-[#0F0F12] border border-[#2A2A2E] shadow-2xl flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200"
         >
-          <nav className="flex flex-col gap-2.5 text-xs font-semibold uppercase tracking-wider text-[#E0E0E0]/80">
-            <a 
-              href="#gallery" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#16161A] hover:text-[#C69F66] transition-colors"
+          {/* 3 Pages Selector for Mobile */}
+          <div className="flex flex-col gap-2">
+            <span className="text-[10px] uppercase font-bold tracking-widest text-[#C69F66] px-1">
+              Select Page:
+            </span>
+            <button 
+              onClick={() => handlePageClick('home')}
+              className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-between ${
+                currentPage === 'home'
+                  ? 'bg-[#C69F66] text-[#0A0A0C]'
+                  : 'bg-[#16161A] text-[#E0E0E0] hover:text-[#C69F66]'
+              }`}
             >
-              Live Photos & Stage
-            </a>
-            <a 
-              href="#the-guarantee" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#16161A] hover:text-[#C69F66] transition-colors"
+              <span>1. Home Experience</span>
+              {currentPage === 'home' && <span className="text-[10px] bg-[#0A0A0C] text-[#C69F66] px-2 py-0.5 rounded-full">Active</span>}
+            </button>
+
+            <button 
+              onClick={() => handlePageClick('gallery')}
+              className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-between ${
+                currentPage === 'gallery'
+                  ? 'bg-[#C69F66] text-[#0A0A0C]'
+                  : 'bg-[#16161A] text-[#E0E0E0] hover:text-[#C69F66]'
+              }`}
             >
-              The Zero-Gbege Guarantee™
-            </a>
-            <a 
-              href="#framework" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#16161A] hover:text-[#C69F66] transition-colors"
+              <span className="flex items-center gap-2">
+                <Camera className="w-3.5 h-3.5" />
+                <span>2. Live Photos & Stage</span>
+              </span>
+              {currentPage === 'gallery' && <span className="text-[10px] bg-[#0A0A0C] text-[#C69F66] px-2 py-0.5 rounded-full">Active</span>}
+            </button>
+
+            <button 
+              onClick={() => handlePageClick('packages')}
+              className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-between ${
+                currentPage === 'packages'
+                  ? 'bg-[#C69F66] text-[#0A0A0C]'
+                  : 'bg-[#16161A] text-[#E0E0E0] hover:text-[#C69F66]'
+              }`}
             >
-              How It Works (5-Step Framework)
-            </a>
-            <a 
-              href="#packages" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#16161A] hover:text-[#C69F66] transition-colors"
-            >
-              Packages & Pricing
-            </a>
-            <a 
-              href="#why-mc-jaye" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg hover:bg-[#16161A] hover:text-[#C69F66] transition-colors"
-            >
-              Why MC JAYE CONCEPTS
-            </a>
-          </nav>
+              <span className="flex items-center gap-2">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>3. Packages & Pricing</span>
+              </span>
+              {currentPage === 'packages' && <span className="text-[10px] bg-[#0A0A0C] text-[#C69F66] px-2 py-0.5 rounded-full">Active</span>}
+            </button>
+          </div>
 
           {/* Direct Phone Lines in Mobile Menu */}
-          <div className="p-3 rounded-xl bg-[#16161A] border border-[#2A2A2E] space-y-2 text-xs">
+          <div className="p-3.5 rounded-xl bg-[#16161A] border border-[#2A2A2E] space-y-2 text-xs">
             <div className="text-[10px] uppercase font-bold tracking-widest text-[#C69F66]">
-              Direct Contact Lines:
+              Direct Phone & WhatsApp:
             </div>
             <div className="flex flex-col gap-1.5">
               <a 
@@ -210,7 +228,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenReel }) => 
                 href={`https://wa.me/${SITE_CONFIG.whatsappPhoneNumber}?text=${encodeURIComponent("Hello MC JAYE, I would like to inquire about hosting my event.")}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-between text-[#C69F66] font-semibold pt-1 border-t border-[#2A2A2E]"
+                className="flex items-center justify-between text-[#C69F66] font-semibold pt-1.5 border-t border-[#2A2A2E]"
               >
                 <span className="flex items-center gap-1.5">
                   <MessageSquare className="w-3.5 h-3.5" /> WhatsApp:

@@ -1,12 +1,19 @@
 import React from 'react';
-import { Instagram, Music2, MapPin, ShieldCheck, Phone, MessageSquare } from 'lucide-react';
+import { Instagram, Music2, MapPin, ShieldCheck, Phone, MessageSquare, Camera, Sparkles } from 'lucide-react';
 import { SITE_CONFIG } from '../config';
+import { PageId } from './Navbar';
 
 interface FooterProps {
   onOpenBooking: () => void;
+  onNavigatePage: (page: PageId) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigatePage }) => {
+  const handleNav = (page: PageId) => {
+    onNavigatePage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer 
       id="main-footer"
@@ -17,8 +24,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#16161A] border border-[#2A2A2E] p-[1px] flex items-center justify-center shadow-lg">
-                <span className="font-serif font-bold text-lg text-[#C69F66]">MJ</span>
+              <div className="w-12 h-12 rounded-full overflow-hidden border border-[#C69F66]/40 shadow-[0_0_15px_rgba(198,159,102,0.25)] flex items-center justify-center bg-black shrink-0">
+                <img 
+                  src={SITE_CONFIG.logo} 
+                  alt="MC JAYE CONCEPTS Logo" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <h3 className="font-serif font-bold text-lg text-white">
@@ -40,44 +51,65 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
             </div>
           </div>
 
-          {/* Quick Navigation Links */}
+          {/* Quick Navigation 3 Pages */}
           <div className="md:col-span-3 space-y-3">
             <p className="text-[11px] font-bold uppercase tracking-widest text-[#C69F66]">
-              Quick Navigation
+              Website Pages
             </p>
-            <ul className="space-y-2 text-xs sm:text-sm text-[#E0E0E0]/70 font-light">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-[#E0E0E0]/70 font-light">
               <li>
                 <button 
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
-                  className="hover:text-white text-[#C69F66] transition-colors font-medium cursor-pointer"
+                  onClick={() => handleNav('home')} 
+                  className="hover:text-white text-[#C69F66] transition-colors font-medium cursor-pointer flex items-center gap-1.5"
                 >
-                  ↑ Main Page (Top of Page)
+                  <span>1. Home Experience</span>
                 </button>
               </li>
               <li>
-                <a href="#the-guarantee" className="hover:text-white transition-colors">
+                <button 
+                  onClick={() => handleNav('gallery')} 
+                  className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
+                >
+                  <Camera className="w-3.5 h-3.5 text-[#C69F66]" />
+                  <span>2. Live Photos & Stage</span>
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleNav('packages')} 
+                  className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-[#C69F66]" />
+                  <span>3. Packages & Pricing</span>
+                </button>
+              </li>
+              <li className="pt-2 border-t border-[#2A2A2E]/60">
+                <button 
+                  onClick={() => {
+                    handleNav('home');
+                    setTimeout(() => {
+                      const el = document.getElementById('the-guarantee');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="hover:text-white text-xs text-[#E0E0E0]/50 transition-colors"
+                >
                   The Zero-Gbege Guarantee™
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#languages" className="hover:text-white transition-colors">
-                  3 Languages (English • Pidgin • Yoruba)
-                </a>
-              </li>
-              <li>
-                <a href="#framework" className="hover:text-white transition-colors">
-                  5-Step Pre-Event Framework
-                </a>
-              </li>
-              <li>
-                <a href="#packages" className="hover:text-white transition-colors">
-                  Experience Packages & Pricing
-                </a>
-              </li>
-              <li>
-                <a href="#why-mc-jaye" className="hover:text-white transition-colors">
-                  Why MC JAYE CONCEPTS
-                </a>
+                <button 
+                  onClick={() => {
+                    handleNav('home');
+                    setTimeout(() => {
+                      const el = document.getElementById('languages');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="hover:text-white text-xs text-[#E0E0E0]/50 transition-colors"
+                >
+                  English • Pidgin • Yoruba Flow
+                </button>
               </li>
             </ul>
           </div>
@@ -107,12 +139,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
                 </a>
               </div>
               <div className="flex items-center justify-between text-[#C69F66] font-semibold pt-1 border-t border-[#2A2A2E]">
-                <span className="flex items-center gap-1.5 font-light">
-                  <MessageSquare className="w-3.5 h-3.5 text-[#C69F66]" /> WhatsApp:
+                <span className="flex items-center gap-1.5">
+                  <MessageSquare className="w-3.5 h-3.5" /> WhatsApp Direct:
                 </span>
                 <a 
                   href={`https://wa.me/${SITE_CONFIG.whatsappPhoneNumber}?text=${encodeURIComponent("Hello MC JAYE, I would like to inquire about hosting my event.")}`}
-                  target="_blank"
+                  target="_blank" 
                   rel="noreferrer"
                   className="font-mono font-bold hover:underline"
                 >
@@ -120,59 +152,46 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
                 </a>
               </div>
             </div>
-            
-            <div className="flex gap-2">
+
+            {/* Social Channels */}
+            <div className="flex items-center gap-3 pt-1">
               <a
-                id="footer-btn-instagram"
                 href={SITE_CONFIG.instagramUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex-1 p-2.5 rounded-full bg-[#16161A] hover:bg-[#C69F66] hover:text-[#0A0A0C] border border-[#2A2A2E] text-xs font-semibold text-[#E0E0E0] flex items-center justify-center gap-2 transition-all group"
+                className="p-2.5 rounded-xl bg-[#16161A] border border-[#2A2A2E] text-[#E0E0E0]/80 hover:text-[#C69F66] hover:border-[#C69F66]/50 transition-colors flex items-center gap-2 text-xs"
               >
-                <Instagram className="w-4 h-4 text-[#C69F66] group-hover:text-[#0A0A0C]" />
+                <Instagram className="w-4 h-4 text-[#C69F66]" />
                 <span>Instagram</span>
               </a>
 
               <a
-                id="footer-btn-tiktok"
                 href={SITE_CONFIG.tiktokUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex-1 p-2.5 rounded-full bg-[#16161A] hover:bg-[#C69F66] hover:text-[#0A0A0C] border border-[#2A2A2E] text-xs font-semibold text-[#E0E0E0] flex items-center justify-center gap-2 transition-all group"
+                className="p-2.5 rounded-xl bg-[#16161A] border border-[#2A2A2E] text-[#E0E0E0]/80 hover:text-[#C69F66] hover:border-[#C69F66]/50 transition-colors flex items-center gap-2 text-xs"
               >
-                <Music2 className="w-4 h-4 text-[#C69F66] group-hover:text-[#0A0A0C]" />
+                <Music2 className="w-4 h-4 text-[#C69F66]" />
                 <span>TikTok</span>
               </a>
-            </div>
 
-            <button
-              id="footer-btn-quick-check"
-              onClick={onOpenBooking}
-              className="w-full py-3 px-4 rounded-full text-xs font-bold uppercase tracking-widest text-[#0A0A0C] bg-[#C69F66] hover:bg-white shadow-md shadow-[#C69F66]/20 transition-all cursor-pointer"
-            >
-              Check Date Availability & Quote
-            </button>
+              <button
+                onClick={() => onOpenBooking()}
+                className="ml-auto px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-[#0A0A0C] bg-[#C69F66] hover:bg-white transition-all shadow-md cursor-pointer"
+              >
+                Quote
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Copyright, Zero-Gbege Badge & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E0E0E0]/60 font-light">
+        {/* Bottom Copyright & Trust Badge */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E0E0E0]/50 font-light">
           <p>© {new Date().getFullYear()} {SITE_CONFIG.brandName}. All rights reserved.</p>
-          
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 text-[#C69F66] font-medium">
-              <ShieldCheck className="w-4 h-4 text-[#C69F66]" />
-              <span>The Zero-Gbege Guarantee™ Verified Event Experience</span>
-            </div>
 
-            <button
-              id="footer-btn-back-to-top"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="px-3.5 py-1.5 rounded-full bg-[#16161A] hover:bg-[#C69F66] text-[#E0E0E0] hover:text-[#0A0A0C] border border-[#2A2A2E] hover:border-[#C69F66] text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
-              title="Return to Main Page"
-            >
-              <span>↑ Top</span>
-            </button>
+          <div className="flex items-center gap-2 text-[#C69F66]">
+            <ShieldCheck className="w-4 h-4" />
+            <span>Guaranteed Zero-Gbege™ Event Execution</span>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Heart, CheckCircle2, Calendar } from 'lucide-react';
-import { SITE_CONFIG } from '../config';
+import { SITE_CONFIG, MC_IMAGES } from '../config';
 
 interface FinalCalloutProps {
   onOpenBooking: () => void;
@@ -75,9 +75,8 @@ export const FinalCallout: React.FC<FinalCalloutProps> = ({ onOpenBooking }) => 
           <div className="flex flex-col items-center justify-center mb-6">
             <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 bg-gradient-to-tr from-[#C69F66] to-white/20 shadow-xl mb-3">
               <img
-                src="https://i.ibb.co/hF7XZ2Kv/Whats-App-Image-2026-08-14-at-18-49-28.jpg"
+                src={MC_IMAGES.blazerSuit}
                 alt="MC Jaye Concepts"
-                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-top rounded-full"
               />
               <div className="absolute -bottom-1 -right-1 p-1.5 rounded-full bg-[#C69F66] text-[#0A0A0C]">

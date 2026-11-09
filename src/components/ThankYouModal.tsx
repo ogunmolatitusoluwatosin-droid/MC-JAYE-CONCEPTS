@@ -52,9 +52,13 @@ export const ThankYouModal: React.FC<ThankYouModalProps> = ({
           <X className="w-4 h-4" />
         </button>
 
-        {/* Celebration Icon */}
-        <div className="w-16 h-16 rounded-2xl bg-[#16161A] border border-[#C69F66]/40 p-[1px] mx-auto mb-5 shadow-xl flex items-center justify-center">
-          <CheckCircle2 className="w-8 h-8 text-[#C69F66]" />
+        {/* Official Brand Logo */}
+        <div className="w-16 h-16 rounded-full overflow-hidden border border-[#C69F66]/60 shadow-[0_0_20px_rgba(198,159,102,0.35)] mx-auto mb-5 bg-black flex items-center justify-center">
+          <img 
+            src={SITE_CONFIG.logo} 
+            alt="MC JAYE CONCEPTS Logo" 
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#16161A] border border-[#2A2A2E] text-[#C69F66] text-xs font-semibold uppercase tracking-wider mb-3 shadow-lg">

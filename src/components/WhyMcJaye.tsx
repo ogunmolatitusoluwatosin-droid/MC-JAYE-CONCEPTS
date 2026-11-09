@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Award, Compass, Users, Clock, Flame } from 'lucide-react';
+import { MC_IMAGES } from '../config';
 
 interface WhyMcJayeProps {
   onOpenBooking: () => void;
@@ -68,9 +69,8 @@ export const WhyMcJaye: React.FC<WhyMcJayeProps> = ({ onOpenBooking }) => {
             <div className="lg:col-span-5 grid grid-cols-2 gap-3">
               <div className="relative rounded-2xl overflow-hidden border border-[#2A2A2E] h-52 group">
                 <img
-                  src="https://i.ibb.co/sB6t5Fz/Whats-App-Image-2026-08-14-at-18-49-31.jpg"
+                  src={MC_IMAGES.traditional}
                   alt="MC Jaye in traditional attire"
-                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
@@ -81,9 +81,8 @@ export const WhyMcJaye: React.FC<WhyMcJayeProps> = ({ onOpenBooking }) => {
 
               <div className="relative rounded-2xl overflow-hidden border border-[#2A2A2E] h-52 group">
                 <img
-                  src="https://i.ibb.co/V06D231s/Whats-App-Image-2026-08-14-at-18-49-30.jpg"
+                  src={MC_IMAGES.crowdEngage}
                   alt="MC Jaye crowd engagement"
-                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />

@@ -124,18 +124,27 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             <X className="w-4 h-4" />
           </button>
 
-          {/* Modal Header */}
-          <div className="mb-8 pr-8">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#16161A] border border-[#2A2A2E] text-[#C69F66] text-xs font-semibold uppercase tracking-wider mb-3 shadow-lg">
-              <Sparkles className="w-3.5 h-3.5 text-[#C69F66]" />
-              <span>Direct Date Availability & Quote</span>
+          {/* Modal Header with Official Brand Logo */}
+          <div className="mb-8 pr-8 flex items-start gap-4">
+            <div className="w-12 h-12 rounded-full overflow-hidden border border-[#C69F66]/50 shadow-[0_0_15px_rgba(198,159,102,0.3)] bg-black shrink-0 hidden sm:block">
+              <img 
+                src={SITE_CONFIG.logo} 
+                alt="MC JAYE CONCEPTS Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
-            <h3 className="font-serif font-bold text-2xl sm:text-3xl text-white tracking-tight">
-              Check Your Date & Get Quote
-            </h3>
-            <p className="text-xs sm:text-sm text-[#E0E0E0]/70 mt-1 font-light">
-              Guaranteed Zero-Gbege™ response directly to your WhatsApp.
-            </p>
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#16161A] border border-[#2A2A2E] text-[#C69F66] text-[11px] font-semibold uppercase tracking-wider mb-2 shadow-lg">
+                <Sparkles className="w-3 h-3 text-[#C69F66]" />
+                <span>Direct Date Availability & Quote</span>
+              </div>
+              <h3 className="font-serif font-bold text-2xl sm:text-3xl text-white tracking-tight">
+                Check Your Date & Get Quote
+              </h3>
+              <p className="text-xs sm:text-sm text-[#E0E0E0]/70 mt-1 font-light">
+                Guaranteed Zero-Gbege™ response directly to your WhatsApp.
+              </p>
+            </div>
           </div>
 
           {errorMsg && (
